@@ -1,0 +1,20 @@
+{
+    "name": "danielfpedro/datasource",
+    "description": "Simples PDO wrap",
+    "require": {
+        "php": "^5.4.16"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Pedro",
+            "email": "danielfpedro@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Datasource\\": "src\\Datasource",
+            "Test\\": "tests"
+        }
+    }
+}
