@@ -37,14 +37,12 @@ $conn
 
 ```
 ### Insert
-**HTML**
 ```html
 <form mehotd="POST">
 	<input type="text" name="titulo">
 	<textarea name="texto"></textarea>
 </form>
 ```
-**PHP**
 ```php
 $conn
 	->insertInto('artigos')
@@ -67,9 +65,26 @@ Para evitar este ataque você pode informar quais campos você deseja que sejam 
 </form>
 ```
 ```php
-// $_POST = ['titulo' => 'Olá', 'texto' => 'Bom dia...', 'ativo' => 1]<- valor injetado
 $conn
 	->insertInto('artigos')
 	->values($_POST, ['titulo', 'texto']) // Apenas titulo e texto serão salvos.
 	->go();
 ```
+
+## Update
+```php
+$conn
+	->update('artigos')
+	->set(['texto' => 'Boa noite.'])
+	->where('id', 1)
+	->go();
+```
+## Delete
+```php
+$conn
+	->delete('artigos')
+	->where('id', 1)
+	->go();
+```
+
+**Obs.:** O `where` aceita apenas um argumento, caso necessite de condições mais elaboradas `rawQuery` deverá ser usado.
