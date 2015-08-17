@@ -54,12 +54,10 @@ class Connection{
 	}
 	public function first($fetchType)
 	{
-		$this->stmt->execute();
 		return $this->stmt->fetch(self::resolveFetch($fetchType));
 	}
 	public function column()
 	{
-		$this->stmt->execute();
 		return $this->stmt->fetchColumn();
 	}
 	protected static function resolveFetch($type)

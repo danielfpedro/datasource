@@ -36,7 +36,7 @@ foreach($artigos as $artigo){
 }
 ```
 ## Fetchs
-Use `all` ou `first` para fazer o `fetch` dos dados, você deve passar qualquer `constante` do `PDO` como argumento ou `assoc(Alias de PDO::FETCH_ASSOC)` ou `obj(Alias de PDO::FETCH_OBJ)`.
+Use `all`, `first` ou `column` para fazer o `fetch` dos dados e passe qualquer `constante` do `PDO`, `assoc(Alias de PDO::FETCH_ASSOC)` ou `obj(Alias de PDO::FETCH_OBJ) como argumento`.
 ```php
 $artigos = $conn
 	->rawQuery('SELECT * FROM artigos')
@@ -44,7 +44,7 @@ $artigos = $conn
 	->all('obj');
 
 foreach($artigos as $artigo){
-	echo $artigo->titulo';
+	echo $artigo->titulo;
 }
 
 $artigo = $conn
