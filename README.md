@@ -21,7 +21,7 @@ $config = [
 	]
 ];
 
-$conn = new Datasource($config);
+$conn = new Datasource($config['default']);
 ```
 
 ## Raw Query
