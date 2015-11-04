@@ -18,10 +18,14 @@ class Connection{
 	{
 
 		$connString = $conn['type'] . ":host=" . $conn['host'] . ";dbname=" . $conn['dbname'] . ";charset=" . $conn['charset'];
-
-		$dbh = new PDO($connString, $conn['username'], $conn['password']);
-		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$this->dbh = $dbh;
+		try {
+			$dbh = new PDO($connString, $conn['username'], $conn['password']);
+			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->dbh = $dbh;	
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			throw new Exception("Error", 1);
+		}
 	}
 
 	public function rawQuery($query)
