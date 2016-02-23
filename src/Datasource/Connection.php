@@ -16,7 +16,6 @@ class Connection{
 
 	public function __construct($conn)
 	{
-
 		$connString = $conn['type'] . ":host=" . $conn['host'] . ";dbname=" . $conn['dbname'] . ";charset=" . $conn['charset'];
 		try {
 			$dbh = new PDO($connString, $conn['username'], $conn['password']);
@@ -35,11 +34,13 @@ class Connection{
 	}
 	public function go($data = [])
 	{
-
+		
 		$this->stmt = $this->dbh->prepare($this->query);
-		$data = array_merge($this->bindValues);
+
+		$data = array_merge($data, $this->bindValues);
+
 		if ($data) {
-			$this->bind($data);
+			$this->_bind($data);
 		}
 		
 		$this->stmt->execute();
@@ -141,7 +142,7 @@ class Connection{
 		return $this;
 	}
 
-	public function bind($data)
+	protected function _bind($data)
 	{
 		foreach ($data as $key => $value) {
 			$this->stmt->bindValue(':' . $key, $value);

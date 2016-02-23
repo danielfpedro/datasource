@@ -111,7 +111,7 @@ $conn
 ## Delete
 ```php
 $conn
-	->delete('artigos')
+	->deleteFrom('artigos')
 	->where('id', 1)
 	->go();
 ```
